@@ -1,5 +1,9 @@
 = itc_gentools
 
+== Latest Version
+
+* v0.1.0 https://github.com/itc-wgtools/itc_gentools/releases/tag/0.1.0
+
 == Usage
 After installation, the itc_gentool has the following input structure:
 
