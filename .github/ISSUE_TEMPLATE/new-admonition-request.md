@@ -1,7 +1,7 @@
 ---
 name: New Admonition request
 about: Suggest the new admonition
-title: "[ADMONITION]"
+title: "[ADMONITION] "
 labels: enhancement
 assignees: woodbe
 
