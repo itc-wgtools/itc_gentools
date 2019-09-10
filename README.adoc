@@ -1,0 +1,30 @@
+= itc_gentools
+
+== Usage
+After installation, the itc_gentool has the following input structure:
+
+  itc_gentool <output type> <source file> <output folder (optional)>
+
+Running the script without any parameters will show a help message.
+
+The following <output type> parameters are accepted (not case sensitive).
+
+[cols="1,3",options="header"]
+|===
+|Parameter
+|Description
+
+|html
+|produces an HTML file from the source file
+
+|pdf
+|produces a PDF file from the source file
+
+|both
+|produces both HTML and PDF files from the source file
+
+|===
+
+If you specify an <output folder> the script will check if it exists and create it if needed. This parameter is not required, and if nothing is specified it will create the output in the folder where the input file is located.
+
+The script checks for the existence of an output file by the same name before publishing the file (Asciidoctor will automatically overwrite the file by default). If the output file already exists, the script will abort. This especially important when using "both" as the output type since it means you will not have files generated from different versions of the same source file.

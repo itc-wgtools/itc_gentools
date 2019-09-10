@@ -1,0 +1,47 @@
+extends: default
+admonition:
+  icon:
+    boilerplate:
+      name: fas-lock
+      stroke_color: 3F903E
+      size: 24
+    review:
+      name: fas-clipboard
+      stroke_color: FDB109
+      size: 24
+    guidance:
+      name: fas-book
+      stroke_color: 0909FD
+      size: 24
+    initial1:
+      name: fas-hourglass-start
+      stroke_color: C50CCB
+      size: 24
+    initial2:
+      name: fas-hand-pointer
+      stroke_color: C50CCB
+      size: 24
+    initial3:
+      name: fas-long-arrow-alt-right
+      stroke_color: C50CCB
+      size: 24
+    initial4:
+      name: fas-arrow-right
+      stroke_color: C50CCB
+      size: 24
+    initial5:
+      name: fas-bullhorn
+      stroke_color: C50CCB
+      size: 24
+    USB1:
+      name: fab-usb
+      stroke_color: CB0C33
+      size: 24
+    USB2:
+      name: fas-microchip
+      stroke_color: CB0C33
+      size: 24
+    discussion:
+      name: fas-comments
+      stroke_color: F5F008
+      size: 24

@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+itc_gentools = File.absolute_path '../lib/itc_gentools.rb', __dir__
+if File.exist? itc_gentools
+  require itc_gentools
+else
+  require 'itc_gentools'
+end
+
+

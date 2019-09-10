@@ -1,0 +1,36 @@
+:icons: font
+
+[BOILERPLATE]
+====
+Boilerplate example
+====
+
+[REVIEW]
+Review example
+
+[GUIDANCE]
+Guidance example\
+
+[INITIAL1]
+Initial test: fa-hourglass-start: f251
+
+[INITIAL2]
+Initial test: fa-hand-pointer: f25a
+
+[INITIAL3]
+Initial test: fa-long-arrow-right: f178
+
+[INITIAL4]
+Initial test: fa-arrow-right: f061
+
+[INITIAL5]
+Initial test: fa-bullhorn: f0a1
+
+[USB1]
+USB test: fa-usb: f287
+
+[USB2]
+USB test: fa-microchip: f2db
+
+[DISCUSSION]
+Discussion test: fa-comments: f0e6
