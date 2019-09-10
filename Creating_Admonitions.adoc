@@ -1,0 +1,134 @@
+= Creating Admonitions
+:showtitle:
+:toc:
+:revnumber: 0.1
+:revdate: 2019-09-09
+
+== Introduction
+In Asciidoctor, Admonitions are blocks of text where some sort of an image is shown to the left that can be used to call attention to the text. Common examples are the NOTE (a blue circle with an "i") and IMPORTANT (a red circle with an "!"). These are very useful in helping point out important items within text, and so are generally used in the guidance and can even be used in the cPP/SD documents.
+
+The Tools WG ended up creating some new admonitions to be used to help guide users of the templates to point out places where text in should be left alone, or specifically reviewed. The point of these new admonitions was to be able to clearly mark that these are for use ONLY in the templates and not for final publication, so by creating new admonitions, it would be clear to the editors they should be removed.
+
+This of course does not mean the end of new admonitions, which is the short purpose of this guide.
+
+== Current Extended Admonitions
+In addition to the admonitions supported by https://asciidoctor.org/docs/user-manual/#admonition[Asciidoctor,"window=\"_blank\"], the following admonitions have been added for use in the https://github.com/itc-wgtools/itc_gentools[itc_gentools] tool.
+
+Asciidoctor supports https://fontawesome.com/icons?d=gallery[Font Awesome,"window=\"_blank\"] icons for admonitions. Critically support is limited to version 4.7.0 of the fonts. So while the gallery link above will show all the available icons, only ones that are supported as of https://fontawesome.com/v4.7.0/[v4.7.0] can be used (it may take some playing around to figure out which ones are available, it is not always clear).
+
+Also, only Free icons are currently supported for use at this time.
+
+.Additional Admonitions
+[cols=".^1,.^1,.^1,.^2",options="header"]
+|===
+|Admonition
+|Color
+|Icon
+|Description
+
+|BOILERPLATE
+|#3F903E
+|https://fontawesome.com/icons/lock?style=solid[fas-lock,"window=\"_blank\"]
+|Text referenced here should be left alone as it is "standard"
+
+|REVIEW
+|#FDB109
+|https://fontawesome.com/icons/clipboard?style=solid[fas-clipboard,"window=\"_blank\"]
+|While the text here is standard, it may need some modifications for the product type
+
+|GUIDANCE
+|#0909FD
+|https://fontawesome.com/icons/book?style=solid[fas-book,"window=\"_blank\"]
+|Used to mark text for guiding what should be done in a section, that there are examples, etc
+
+|INITIAL
+|#C50CCB
+|https://fontawesome.com/icons/hand-pointer?style=solid[fas-hand-pointer,"window=\"_blank\"]
+|Things that are specific for initial work with a WG/iTC that may not apply to later updates
+
+|USB
+|#CB0C33
+|https://fontawesome.com/icons/microchip?style=solid[fas-microchip,"window=\"_blank\"]
+|Information gained from the USB Portable Storage Devices iTC
+
+|DISCUSSION
+|#F5F008
+|https://fontawesome.com/icons/comments?style=solid[fas-comments,"window=\"_blank\"]
+|Points for further discussion about how this could apply or work for a WG/iTC
+
+|===
+
+=== Icon Names/Codes
+The various parts of this configuration need both the "name" and the "code" for the icon. 
+
+The "name" for the icon in the configuration is a combination of the "fas-" and the actual name (ignoring and "fa-" that is shown as part of it). Clicking on the link above for the icon will show both the name and the code (the unicode being the 4 characters next to the small icon). The icon name will be used in one file and the unicode will be used in the other, so make sure to keep them straight.
+
+== Creating New Admonitions
+There probably isn't a lot of reason to create a huge number of admonitions, but if new ones are needed, then in addition to specifying the information in the table, proper files need to be edited to add this information.
+
+=== Files for Editing
+Since a number of admonitions have already been created, the method for adding new ones is largely a copy/paste/minor edit operation to add new fields to the three files used to add these into any Asciidoctor output. If the files are not all modified then it is possible that output may only be available for HTML and note PDF (it is not possible to be the other way since the PDF output relies on the HTML process first).
+
+Within the repository, the following files need to be edited:
+
+  itc_gentools
+   |
+   |-lib
+      |
+      |--> notice-block.rb
+      |
+      |-notice-block
+      |  |
+      |  |--> extension.rb
+      |
+      |-themes
+         |
+         |--> admonition-theme.yml
+
+Here a dummy admonition of FOO will be used to show the changes.
+
+It is important to realize that the class names are all case sensitive and need to be consistent. 
+
+==== notice-block.rb
+Two lines need to be added to this file. They can be copied from the existing lines. These must be placed inside the Extensions.register block. Note that the name *Foo* is placed into each line. 
+
+  block FooAdmonitionBlock
+  docinfo_processor FooAdmonitionBlockDocinfo
+
+==== extension.rb
+Two new classes must be added to this file. Again they can be copied from the existing classes in the file.
+
+It is important that the "named" line be in all capitals since that is the convention being used for admonition blocks. This is the name that will be used in the Asciidoctor files for the admonition, so if it is not correct, the admonition will not properly appear in the output.
+
+  class FooAdmonitionBlock < Extensions::BlockProcessor
+    use_dsl
+    named :FOO
+    on_contexts :example, :paragraph
+    def process parent, reader, attrs
+      attrs['name'] = 'Foo'
+      attrs['caption'] = 'Foo'
+      create_block parent, :admonition, reader.lines, attrs, content_model: :compound
+    end
+  end
+  
+  class FooAdmonitionBlockDocinfo < Extensions::DocinfoProcessor
+    use_dsl
+    def process doc
+      '<style>
+  .admonitionblock td.icon .icon-Foo:before {content:"\ffff";color:#CB0C33;}
+  </style>'
+    end
+  end
+
+==== admonition-theme.yml
+The following lines need to be added under the *icon* heading. They should just be added at the end matching the existing listing. Creating new headings will cause the admonitions to fail.
+
+  foo:
+    name: fas-foo
+    stroke_color: CB0C33
+    size: 24
+
+== Testing the Admonition
+There is a sample.adoc file located in the _notice-block_ folder. This should be updated to include the new admonition that has been created. The itc_gentools script can then be run using this file as input to verify that the new admonition is being output correctly.
+
+There have been times when HTML output will be OK with an icon but the PDF output is not. This is most common when the Font Awesome icon is not solid. The HTML output will default back to the solid version and the PDF will not, so one will work and the other will not. This is usually because the solid version is Free while the outline requires a paid subscription.
