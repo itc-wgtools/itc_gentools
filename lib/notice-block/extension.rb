@@ -53,86 +53,26 @@ class GuidanceAdmonitionBlock < Extensions::BlockProcessor
   end
 end
 
-class Initial1AdmonitionBlock < Extensions::BlockProcessor
+class InitialAdmonitionBlock < Extensions::BlockProcessor
   use_dsl
-  named :INITIAL1
+  named :INITIAL
   on_contexts :example, :paragraph
 
   def process parent, reader, attrs
-    attrs['name'] = 'initial1'
-    attrs['caption'] = 'Initial1'
+    attrs['name'] = 'initial'
+    attrs['caption'] = 'Initial'
     create_block parent, :admonition, reader.lines, attrs, content_model: :compound
   end
 end
 
-class Initial2AdmonitionBlock < Extensions::BlockProcessor
+class USBAdmonitionBlock < Extensions::BlockProcessor
   use_dsl
-  named :INITIAL2
+  named :USB
   on_contexts :example, :paragraph
 
   def process parent, reader, attrs
-    attrs['name'] = 'initial2'
-    attrs['caption'] = 'Initial2'
-    create_block parent, :admonition, reader.lines, attrs, content_model: :compound
-  end
-end
-
-class Initial3AdmonitionBlock < Extensions::BlockProcessor
-  use_dsl
-  named :INITIAL3
-  on_contexts :example, :paragraph
-
-  def process parent, reader, attrs
-    attrs['name'] = 'initial3'
-    attrs['caption'] = 'Initial3'
-    create_block parent, :admonition, reader.lines, attrs, content_model: :compound
-  end
-end
-
-class Initial4AdmonitionBlock < Extensions::BlockProcessor
-  use_dsl
-  named :INITIAL4
-  on_contexts :example, :paragraph
-
-  def process parent, reader, attrs
-    attrs['name'] = 'initial4'
-    attrs['caption'] = 'Initial4'
-    create_block parent, :admonition, reader.lines, attrs, content_model: :compound
-  end
-end
-
-class Initial5AdmonitionBlock < Extensions::BlockProcessor
-  use_dsl
-  named :INITIAL5
-  on_contexts :example, :paragraph
-
-  def process parent, reader, attrs
-    attrs['name'] = 'initial5'
-    attrs['caption'] = 'Initial5'
-    create_block parent, :admonition, reader.lines, attrs, content_model: :compound
-  end
-end
-
-class USB1AdmonitionBlock < Extensions::BlockProcessor
-  use_dsl
-  named :USB1
-  on_contexts :example, :paragraph
-
-  def process parent, reader, attrs
-    attrs['name'] = 'USB1'
-    attrs['caption'] = 'USB1'
-    create_block parent, :admonition, reader.lines, attrs, content_model: :compound
-  end
-end
-
-class USB2AdmonitionBlock < Extensions::BlockProcessor
-  use_dsl
-  named :USB2
-  on_contexts :example, :paragraph
-
-  def process parent, reader, attrs
-    attrs['name'] = 'USB2'
-    attrs['caption'] = 'USB2'
+    attrs['name'] = 'USB'
+    attrs['caption'] = 'USB'
     create_block parent, :admonition, reader.lines, attrs, content_model: :compound
   end
 end
@@ -179,72 +119,22 @@ class GuidanceAdmonitionBlockDocinfo < Extensions::DocinfoProcessor
   end
 end
 
-class Initial1AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
+class InitialAdmonitionBlockDocinfo < Extensions::DocinfoProcessor
   use_dsl
 
   def process doc
     '<style>
-.admonitionblock td.icon .icon-initial1:before {content:"\f251";color:#C50CCB;}
+.admonitionblock td.icon .icon-initial:before {content:"\f25a";color:#C50CCB;}
 </style>'
   end
 end
 
-class Initial2AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
+class USBAdmonitionBlockDocinfo < Extensions::DocinfoProcessor
   use_dsl
 
   def process doc
     '<style>
-.admonitionblock td.icon .icon-initial2:before {content:"\f25a";color:#C50CCB;}
-</style>'
-  end
-end
-
-class Initial3AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
-  use_dsl
-
-  def process doc
-    '<style>
-.admonitionblock td.icon .icon-initial3:before {content:"\f178";color:#C50CCB;}
-</style>'
-  end
-end
-
-class Initial4AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
-  use_dsl
-
-  def process doc
-    '<style>
-.admonitionblock td.icon .icon-initial4:before {content:"\f061";color:#C50CCB;}
-</style>'
-  end
-end
-
-class Initial5AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
-  use_dsl
-
-  def process doc
-    '<style>
-.admonitionblock td.icon .icon-initial5:before {content:"\f0a1";color:#C50CCB;}
-</style>'
-  end
-end
-
-class USB1AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
-  use_dsl
-
-  def process doc
-    '<style>
-.admonitionblock td.icon .icon-USB1:before {content:"\f287";color:#CB0C33;}
-</style>'
-  end
-end
-
-class USB2AdmonitionBlockDocinfo < Extensions::DocinfoProcessor
-  use_dsl
-
-  def process doc
-    '<style>
-.admonitionblock td.icon .icon-USB2:before {content:"\f2db";color:#CB0C33;}
+.admonitionblock td.icon .icon-USB:before {content:"\f2db";color:#CB0C33;}
 </style>'
   end
 end
