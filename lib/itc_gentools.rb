@@ -1,6 +1,6 @@
 # iTC GenTools
-# version 0.1.0
-# August 13, 2019
+# version 0.2.1
+# September 19, 2019
 # Brian Wood, be.wood@samsung.com
 # MIT License
 
@@ -92,7 +92,7 @@ module ItcGentools
         puts "Checking if #{poname} exists"
         
         if (File.exist?(poname))
-          pits""
+          puts""
           puts "A PDF output file already exists, please delete or rename it to proceed."
           exists = exists + 1
         end
