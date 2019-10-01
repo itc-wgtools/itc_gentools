@@ -116,7 +116,7 @@ module ItcGentools
         puts "Loading Custom Notice blocks ..."
         puts "Preparing PDF Output ..."
       
-        system("asciidoctor-pdf -r #{itchome}/notice-block.rb -r asciidoctor-diagram -a pdf-theme=#{itchome}/themes/admonition-theme.yml #{outcommand} #{filename}")
+        system("asciidoctor-pdf -r #{itchome}/notice-block.rb -r asciidoctor-diagram -d book -a pdf-theme=#{itchome}/themes/admonition-theme.yml #{outcommand} #{filename}")
       end
     
     end
