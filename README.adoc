@@ -4,10 +4,19 @@
 
 * v0.2.1 https://github.com/itc-wgtools/itc_gentools/releases/tag/0.2.1
 
+== Installation
+Download the GEM file at the Latest Version link.
+
+Install in Ruby using:
+
+  gem install itc_gentools-X.Y.Z.gem
+
+If you have a different method for installing GEM files this should be fine.
+
 == Usage
 After installation, the itc_gentool has the following input structure:
 
-  itc_gentool <output type> <source file> <output folder (optional)>
+  itc_gentools <output type> <source file> <output folder (optional)>
 
 Running the script without any parameters will show a help message.
 
