@@ -1,0 +1,70 @@
+= Direct Use of Asciidoctor tools for iTCs
+For simplicity and consistency, it is recommended to use the itc_gentools script, but there could be times when more flexibility is necessary. The following sections specify the command line parameters that are being used in the script.
+
+[IMPORTANT]
+====
+The provided script is based on the expectations for use at the time it was created. If you determine there are other features that are needed or changes you have made, please provide this feedback to the iTC Tools WG so they can be shared with the wider community.
+====
+
+The <itc_gentools HOME> is the installed location of the package.
+
+== HTML Command Line Parameters
+If you have a need to run the Asciidoctor HTML generation directly instead of through the provided scripts, the following parameters must be added for consistent output (in addition to the input filename).
+
+Note that it is possible to skip some of these if you do not need the feature offered, but having it enabled and not using it does not cause any problems, so the above scripts always call these for consistency.
+
+The following is the current HTML command line being used in the script.
+
+  asciidoctor -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-diagram -a data-uri -a toc=left -D <output folder> sample.adoc
+
+The parameters are specified in the table below.
+
+.HTML Asciidoctor Parameters
+[cols="1,2",options="header"]
+|===
+|Parameter
+|Description
+
+|-r asciidoctor-diagram
+|Enables ditaa graphics generation output
+
+|-r <itc_gentools HOME>/notice-block.rb
+|Calls the iTC admonition block for custom icons. This
+
+This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed.
+
+|-a data-uri
+|This will embed the graphics into the output (so the HTML page is more portable)
+
+|-a toc=left
+|When generating HTML output this makes the TOC a sidebar on the left (instead of placed inline at the top of the page)
+
+|===
+
+== PDF Command Line Parameters
+If you have a need to run the Asciidoctor PDF generation directly instead of through the provided scripts, the following parameters must be added for consistent output (in addition to the input filename).
+
+Note that it is possible to skip some of these if you do not need the feature offered, but having it enabled and not using it does not cause any problems, so the itc_gentools script always call these for consistency.
+
+The following is the current PDF command line being used in the script.
+
+  asciidoctor-pdf -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-diagram -a pdf-theme=<itc_gentools HOME>/themes/admonition-theme.yml -D <output folder> sample.adoc
+
+.PDF Asciidoctor Parameters
+[cols="1,2",options="header"]
+|===
+|Parameter
+|Description
+
+|-r asciidoctor-diagram
+|Enables ditaa graphics generation output
+
+|-r <itc_gentools HOME>/notice-block.rb
+|Calls the iTC admonition block for custom icons. This
+
+This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed.
+
+|-a pdf-theme=<itc_gentools HOME>/themes/admonition-theme.yml
+|This goes along with the notice-block and must be used together to properly render the icons.
+
+|===
