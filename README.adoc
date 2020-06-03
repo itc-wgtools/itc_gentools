@@ -2,7 +2,7 @@
 
 == Latest Version
 
-* v0.2.1 https://github.com/itc-wgtools/itc_gentools/releases/tag/0.2.1
+* v0.3 https://github.com/itc-wgtools/itc_gentools/releases/tag/0.3
 
 == Installation
 Download the GEM file at the Latest Version link (save it to a place you can find, such as the folder where Ruby is installed).
