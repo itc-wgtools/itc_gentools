@@ -1,6 +1,6 @@
 # iTC GenTools
-# version 0.2.1
-# September 19, 2019
+# version 0.3
+# June 3, 2020
 # Brian Wood, be.wood@samsung.com
 # MIT License
 
@@ -10,7 +10,7 @@ module ItcGentools
   # Check for proper number of arguments and provide basic help if incorrect.
   if ARGV.length < 2 || ARGV.length > 3
     puts ""
-    puts "The command line for itc-gentool is: itc-gentool <output type> <source file> <output folder (optional)>"
+    puts "The command line for itc_gentools is: itc_gentools <output type> <source file> <output folder (optional)>"
     puts " The commands must be entered in this order"
     puts ""
     puts "The output file(s) will be placed into the output folder if one is specified (it will be created if needed)."
@@ -37,7 +37,7 @@ module ItcGentools
 
   iname = filename
   # find home folder for script to locate other required scripts (may not be needed)
-  itchome = File.dirname(__FILE__)
+  itchome = __dir__
   
   if !(File.exist?(filename))
     puts ""
