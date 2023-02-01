@@ -2,7 +2,7 @@
 
 == Latest Version
 
-* v0.3 https://github.com/itc-wgtools/itc_gentools/releases/tag/0.3
+* v1.0 https://github.com/itc-wgtools/itc_gentools/releases/tag/1.0
 
 == Installation
 Download the GEM file at the Latest Version link (save it to a place you can find, such as the folder where Ruby is installed).
@@ -12,6 +12,8 @@ Install in Ruby using:
   gem install itc_gentools-X.Y.Z.gem
 
 If you have a different method for installing GEM files this should be fine.
+
+Using the above installation instructions all dependencies (asciidoctor and needed components) will be installed automatically.
 
 == Usage
 After installation, the itc_gentool has the following input structure:
