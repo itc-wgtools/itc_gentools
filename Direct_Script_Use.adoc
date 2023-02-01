@@ -15,7 +15,7 @@ Note that it is possible to skip some of these if you do not need the feature of
 
 The following is the current HTML command line being used in the script.
 
-  asciidoctor -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-diagram -a data-uri -a toc=left -D <output folder> sample.adoc
+  asciidoctor -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-lists -r asciidoctor-diagram -a data-uri -a toc=left -D <output folder> sample.adoc
 
 The parameters are specified in the table below.
 
@@ -28,10 +28,13 @@ The parameters are specified in the table below.
 |-r asciidoctor-diagram
 |Enables ditaa graphics generation output
 
-|-r <itc_gentools HOME>/notice-block.rb
-|Calls the iTC admonition block for custom icons. This
+|-r asciidoctor-lists 
+|Calls the https://github.com/Alwinator/asciidoctor-lists[asciidoctor-lists] function which can be used to create additional table of contents sections for Images and Tables.
 
-This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed.
+|-r <itc_gentools HOME>/notice-block.rb
+|Calls the iTC admonition block for custom icons. 
+
+This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed. It is not needed if you did not use the templates.
 
 |-a data-uri
 |This will embed the graphics into the output (so the HTML page is more portable)
@@ -48,7 +51,7 @@ Note that it is possible to skip some of these if you do not need the feature of
 
 The following is the current PDF command line being used in the script.
 
-  asciidoctor-pdf -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-diagram -a pdf-theme=<itc_gentools HOME>/themes/admonition-theme.yml -D <output folder> sample.adoc
+  asciidoctor-pdf -r <itc_gentools HOME>/notice-block.rb -r asciidoctor-lists -r asciidoctor-diagram -a pdf-theme=<itc_gentools HOME>/themes/admonition-theme.yml -D <output folder> sample.adoc
 
 .PDF Asciidoctor Parameters
 [cols="1,2",options="header"]
@@ -59,10 +62,13 @@ The following is the current PDF command line being used in the script.
 |-r asciidoctor-diagram
 |Enables ditaa graphics generation output
 
-|-r <itc_gentools HOME>/notice-block.rb
-|Calls the iTC admonition block for custom icons. This
+|-r asciidoctor-lists 
+|Calls the https://github.com/Alwinator/asciidoctor-lists[asciidoctor-lists] function which can be used to create additional table of contents sections for Images and Tables.
 
-This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed.
+|-r <itc_gentools HOME>/notice-block.rb
+|Calls the iTC admonition block for custom icons. 
+
+This enables the graphics in the templates for iTC guidance, and should be used to help spot sections that may not have yet been removed. It is not needed if you did not use the templates.
 
 |-a pdf-theme=<itc_gentools HOME>/themes/admonition-theme.yml
 |This goes along with the notice-block and must be used together to properly render the icons.

@@ -1,7 +1,7 @@
 # iTC GenTools
-# version 0.3
-# June 3, 2020
-# Brian Wood, be.wood@samsung.com
+# version 1.0
+# January 31, 2023
+# Brian Wood, woodbe@bewconsulting.com
 # MIT License
 
 module ItcGentools
@@ -21,6 +21,8 @@ module ItcGentools
     puts " both - produces both HTML and PDF files from the source file"
     puts ""
     puts " If both is specified, if either output file already exists then the script will abort"
+    puts ""
+    puts "itc_gentools v1.0"
     exit;
   end
   
@@ -106,7 +108,7 @@ module ItcGentools
         puts "Loading Custom Notice blocks ..."
         puts "Preparing HTML Output ..."
       
-        system("asciidoctor -r #{itchome}/notice-block.rb -r asciidoctor-diagram -a data-uri -a toc=left #{outcommand} #{filename}")
+        system("asciidoctor -r #{itchome}/notice-block.rb -r asciidoctor-lists -r asciidoctor-diagram -a data-uri -a toc=left #{outcommand} #{filename}")
       end
       
       if (output == "pdf" || output == "both") && exists == 0
@@ -116,7 +118,7 @@ module ItcGentools
         puts "Loading Custom Notice blocks ..."
         puts "Preparing PDF Output ..."
       
-        system("asciidoctor-pdf -r #{itchome}/notice-block.rb -r asciidoctor-diagram -a pdf-theme=#{itchome}/themes/admonition-theme.yml #{outcommand} #{filename}")
+        system("asciidoctor-pdf -r #{itchome}/notice-block.rb -r asciidoctor-lists -r asciidoctor-diagram -a pdf-theme=#{itchome}/themes/admonition-theme.yml #{outcommand} #{filename}")
       end
     
     end
